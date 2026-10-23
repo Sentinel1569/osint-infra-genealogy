@@ -113,3 +113,5 @@ pre { background: var(--panel-2); padding: 10px; border-radius: 8px; overflow: a
 #toast div { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--bad); padding: 10px 14px; margin-top: 8px; border-radius: 8px; box-shadow: var(--shadow); }
 #toast div.ok { border-left-color: var(--ok); }
 .banner { background: var(--panel-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 12.5px; color: var(--muted); margin-bottom: 16px; }
+
+[hidden] { display: none !important; }
