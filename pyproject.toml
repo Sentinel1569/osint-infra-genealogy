@@ -21,7 +21,11 @@ infragen = "infragen.__main__:main"
 include = ["infragen*"]
 
 [tool.setuptools.package-data]
-infragen = ["static/*", "static/vendor/*"]
+infragen = ["static/*", "static/vendor/*", "static/vendor/images/*", "data/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning", "ignore:.*httpx.*"]
 
 [tool.ruff]
 line-length = 140
@@ -29,4 +33,4 @@ target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP"]
-ignore = ["B008"]
+ignore = ["B008", "E501"]
