@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infrastructure Genealogy</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%232f6fde%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/static/base.css">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+<header class="top">
+  <div class="logo">IG</div>
+  <div><h1>Infrastructure Genealogy</h1><div class="sub">How a domain's public infrastructure evolved: certificates, names, addresses, hosting</div></div>
+  <div class="spacer"></div>
+  <button id="theme" class="ghost sm" title="Toggle theme">◐ Theme</button>
+</header>
+<main>
+  <div class="grid cols-side">
+    <aside class="grid" style="align-content:start">
+      <section class="card">
+        <h2>Investigate</h2>
+        <label for="domain">Domain</label>
+        <input id="domain" type="text" placeholder="example.com" autocomplete="off" spellcheck="false">
+        <div class="row" style="margin-top:10px">
+          <button id="go">Investigate</button>
+          <button id="demo" class="ghost">Load demo</button>
+        </div>
+        <details style="margin-top:12px">
+          <summary>Merge passive DNS export (optional)</summary>
+          <textarea id="pdns" placeholder="rrname,rrtype,rdata,first_seen,last_seen&#10;www.example.com,A,192.0.2.1,2021-01-01,2022-06-30"></textarea>
+          <div class="hint">CSV or JSON lines (COF format <code>time_first</code>/<code>time_last</code> accepted). Live CT and DNS only show the present plus certificate history; passive DNS adds historical resolutions.</div>
+        </details>
+        <div class="hint">Sources: Certificate Transparency (crt.sh), DNS-over-HTTPS, RDAP. Passive collection only; nothing touches the target's servers.</div>
+      </section>
+      <section class="card" id="exportCard" hidden>
+        <h2>Export</h2>
+        <div class="row">
+          <button id="dlJson" class="ghost sm">JSON</button>
+          <button id="dlMd" class="ghost sm">Markdown report</button>
+        </div>
+      </section>
+      <section class="card" id="detailCard">
+        <h2>Selection</h2>
+        <div id="detail" class="small muted">Click a node or edge in the graph to see its lifespan, evidence and explanation.</div>
+      </section>
+    </aside>
+
+    <div class="grid" style="align-content:start">
+      <div id="errors"></div>
+      <div class="grid cols-4" id="stats" hidden></div>
+
+      <section class="card">
+        <div class="row" style="margin-bottom:10px">
+          <h2 style="margin:0">Genealogy graph</h2>
+          <label class="shrink small" style="margin:0"><input type="checkbox" id="collapse" checked> Collapse certificates</label>
+          <label class="shrink small" style="margin:0"><input type="checkbox" id="showAll"> Ignore time</label>
+        </div>
+        <div id="cy" class="graph"><div class="empty" style="margin:40px">Run an investigation or load the demo.</div></div>
+        <div class="row timebar">
+          <button id="play" class="ghost sm shrink" title="Animate through time">▶</button>
+          <input id="time" type="range" min="0" max="100" value="100" disabled>
+          <span id="timeLabel" class="mono shrink">—</span>
+        </div>
+        <div class="legend">
+          <span><i style="background:var(--n-apex)"></i>Domain</span>
+          <span><i style="background:var(--n-sub)"></i>Subdomain</span>
+          <span><i style="background:var(--n-ext)"></i>External name</span>
+          <span><i style="background:var(--n-cert)"></i>Certificate</span>
+          <span><i style="background:var(--n-issuer)"></i>CA</span>
+          <span><i style="background:var(--n-ip)"></i>IP</span>
+          <span><i style="background:var(--n-prov)"></i>Network owner</span>
+          <span><i style="background:var(--n-svc)"></i>MX / NS</span>
+        </div>
+      </section>
+
+      <div class="grid cols-2">
+        <section class="card"><h2>Timeline of changes</h2><div id="timeline" class="scroll timeline"></div></section>
+        <section class="card"><h2>Eras</h2><div id="eras" class="scroll"></div></section>
+      </div>
+
+      <section class="card">
+        <div class="tabs" id="tabs">
+          <button data-tab="names" class="active">Names</button>
+          <button data-tab="certs">Certificates</button>
+          <button data-tab="ips">Addresses</button>
+          <button data-tab="shared">Shared infrastructure</button>
+          <button data-tab="sources">Sources</button>
+        </div>
+        <div id="tab" class="scroll"></div>
+      </section>
+    </div>
+  </div>
+</main>
+<script src="/static/vendor/cytoscape.min.js"></script>
+<script src="/static/base.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>

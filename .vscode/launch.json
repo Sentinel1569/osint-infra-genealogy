@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Web app (demo data)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "infragen",
+      "args": ["serve", "--reload"],
+      "env": { "OSINT_OFFLINE": "1" },
+      "justMyCode": true
+    },
+    {
+      "name": "Web app (live sources)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "infragen",
+      "args": ["serve", "--reload"],
+      "justMyCode": true
+    },
+    {
+      "name": "Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["-q"],
+      "env": { "OSINT_OFFLINE": "1" }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+rrname,rrtype,rdata,first_seen,last_seen
+northwind.example,A,192.0.2.10,2018-03-01,2020-06-14
+northwind.example,A,198.51.100.20,2020-06-15,2024-02-01
+northwind.example,A,203.0.113.40,2024-02-02,
+www.northwind.example,A,192.0.2.10,2018-03-01,2020-06-14
+www.northwind.example,A,198.51.100.20,2020-06-15,2024-02-01
+www.northwind.example,A,203.0.113.40,2024-02-02,
+shop.northwind.example,A,192.0.2.10,2019-05-01,2020-06-14
+shop.northwind.example,A,198.51.100.21,2020-06-15,2023-03-30
+mail.northwind.example,A,192.0.2.25,2019-01-08,
+vpn.northwind.example,A,198.51.100.50,2020-04-01,
+staging.northwind.example,A,198.51.100.77,2021-02-01,2022-04-20
+api.northwind.example,A,198.51.100.30,2021-06-01,2024-02-01
+api.northwind.example,A,203.0.113.41,2024-02-02,
+store.northwind.example,CNAME,northwind.shops.saas-store.example,2023-02-15,
+dev-portal.northwind.example,A,203.0.113.41,2024-05-10,
+auth.northwind.example,A,203.0.113.60,2025-01-20,

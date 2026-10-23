@@ -1,0 +1,12 @@
+:root { --n-apex:#2f6fde; --n-sub:#3fa7d6; --n-ext:#9aa4b2; --n-cert:#c7a14a; --n-issuer:#d9822b; --n-ip:#2f9e6e; --n-prov:#7b4bc4; --n-svc:#c2477a; }
+.timebar { margin-top: 10px; }
+.timebar input[type=range] { flex: 1; accent-color: var(--accent); }
+.timeline .ev { display: grid; grid-template-columns: 92px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.timeline .ev:hover { background: var(--panel-2); }
+.timeline .ev .d { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.timeline .ev .t { font-weight: 600; }
+.kind-new_name { color: var(--info); } .kind-gone { color: var(--muted); } .kind-ca_change { color: var(--warn); }
+.kind-hosting_move { color: var(--hyp); } .kind-ip_change { color: var(--ok); } .kind-origin { color: var(--accent); }
+.chips span { display: inline-block; background: var(--panel-2); border: 1px solid var(--border); border-radius: 6px; padding: 0 6px; margin: 1px 2px; font-size: 12px; }
+.kv { display: grid; grid-template-columns: 100px 1fr; gap: 4px 10px; font-size: 12.5px; }
+.kv div:nth-child(odd) { color: var(--muted); }
